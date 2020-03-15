@@ -1,0 +1,52 @@
+#默认环境
+spring:
+  #redis
+  redis:
+    host: 127.0.0.1
+    port: 6379
+   #实现热部署
+  devtools:
+    restart:
+      enabled: true
+  profiles:
+    active: dev
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: tt
+    password: 1234
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 1 from dual
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+###mybatis配置
+mybatis:
+  type-aliases-package: com.seecen.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  mapper-locations: classpath:mappers/*.xml
+
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

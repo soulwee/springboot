@@ -1,0 +1,46 @@
+﻿为什么要用springboot?
+1.传统项目整合配置文件过多,繁琐
+2.jar包版本冲突或者不支持的情况
+
+什么是springboot
+1.一个快速开发的框架,能够快速整合第三方框架(通过maven的继承实现)
+2.减少xml配置文件,而是用注解开发
+3.内嵌的http服务器(tomcat,jetty)
+spring-boot-starter-parent
+maven支持依赖关系,表示依赖指定的parent中的版本后面不需要再指定version
+spring-boot-starter-web表示springweb的核心组件
+
+注解
+@RestController表示这个Controller下的所有方法返回json格式,并且可以直接
+编写RestFul风格的接口
+@EnableAutoConfiguration告诉springboot自动依赖装配,并且只扫描本类
+@ComponentScan 该注解会扫描指定的包中的类
+@SpringBootApplication这个注解替代了上面两个注解,当前包下或者后代包
+中所有的类都可以扫描到
+
+全局异常处理,通过AOP的方式来捕获发生的异常,进行异常的处理,需要使用到
+@ControllerAdvice 用来加在异常处理类上,还有个属性指定在哪个包或者类下
+的方法发生异常时进入到这个异常类中处理
+@ExceptionHandler 加在方法上,表示拦截的异常,可以指定某种异常类下
+在发生对应的异常时进入方法中处理,方法可以返会多种类型的结果,也可以返回
+json对象
+
+注解的解释:
+@Data标签,生成getter/setter/toString()方法,equals()方法,hashCode()方法,不带参构造
+@NonNull:让你NullPointerException
+@CleanUp:自动资源管理,不用再在finally中添加资源的close方法
+@Setter/@Getter:自动生成set和get方法
+@ToString:自动生成toString方法
+@EqualsAndHashcode:从对象的字段中生成hashCode和equals的实现
+@NoArgsConstructor/@RequiredArgsConstructor/@AllArgsConsturctor
+自动生成构造方法
+@Value:用于注解final类
+@Builder:产生复杂的构建器api类
+@SneakyThrows:异常处理(谨慎使用)
+@Synchronized:同步方法安全的转化
+@Getter(lazy=true):
+@Log : 支持各种logger对象，使用时用对应的注解
+
+Slf4j只是实现了抽象的日志接口,不需要关注某种具体实现的日志框架
+它仅仅是一个为java程序提供日志输出的同一接口,并不是一个具体的
+日志实现方案,就比如jdbc一样,只是一种规则而已
