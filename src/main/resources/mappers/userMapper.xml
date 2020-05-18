@@ -4,14 +4,14 @@
 
 <mapper namespace="com.seecen.dao.UserDao">
     <resultMap id="UserMap" type="User">
-        <id property="id" column="userid"/>
-        <result property="name" column="username"/>
-        <result property="pass" column="password"/>
+        <id property="id" column="usr_ent_id"/>
+        <result property="name" column="usr_ste_usr_id"/>
+        <result property="pass" column="usr_pwd"/>
     </resultMap>
     <select id="queryAllUser" resultMap="UserMap">
-        select * from tb_user
+        select * from reguser
     </select>
     <select id="queryUserById" parameterType="int" resultMap="UserMap">
-        select * from TB_USER where USERID=#{id}
+        select * from reguser where usr_ent_id=#{id}
     </select>
 </mapper>

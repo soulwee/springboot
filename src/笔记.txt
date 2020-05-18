@@ -44,3 +44,23 @@ json对象
 Slf4j只是实现了抽象的日志接口,不需要关注某种具体实现的日志框架
 它仅仅是一个为java程序提供日志输出的同一接口,并不是一个具体的
 日志实现方案,就比如jdbc一样,只是一种规则而已
+
+减少mvc-servlet.xml配置文件
+<mvc:annotation-driven>
+    <mvc:argument-resolvers>
+        <bean class="com.seecen.resolver.UserResolver" />
+    </mvc:argument-resolvers>
+    <mvc:message-converters>
+        <bean class="com.seecen.web.MyMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/myjson</value>
+                        <value>text/myjson</value>
+                    </list>
+                </property>
+        </bean>
+    </mvc:message-converters>
+</mvc:annotation-driven>
+	<mvc:interceptors>
+    	<bean class="com.seecen.interceptor.UserInterceptor" />
+    </mvc:interceptors>

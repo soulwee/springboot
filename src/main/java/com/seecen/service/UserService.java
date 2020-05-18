@@ -5,6 +5,10 @@ import com.seecen.entity.User;
 
 
 public interface UserService {
-    public PageInfo<User> queryAllUser(int pageNum, int pageSize);
+    PageInfo<User> queryAllUser(int pageNum, int pageSize);
     User queryUserById(int id);
+    String testAspect(String a,Long b);
+    default void a(){//jdk8无需实现default方法
+
+    }
 }

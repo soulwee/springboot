@@ -27,4 +27,9 @@ public class UserServiceImpl implements UserService {
     public User queryUserById(int id) {
         return userDao.queryUserById(id);
     }
+
+    @Override
+    public String testAspect(String a,Long b){
+        return a+b;
+    }
 }

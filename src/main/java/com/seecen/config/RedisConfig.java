@@ -49,6 +49,8 @@ public class RedisConfig {
     @Value("${spring.redis.cluster.max-redirects}")
     private Integer mmaxRedirectsac;*/
 
+
+
     /**
      * JedisPoolConfig 连接池
      * @return

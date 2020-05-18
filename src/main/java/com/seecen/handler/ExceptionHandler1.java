@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//如果在webmvcconfig里配置过HandlerExceptionResolver 就不会进这里
 @ControllerAdvice(basePackages = "com.seecen.controller")
 public class ExceptionHandler1 {
     @ExceptionHandler(RuntimeException.class)

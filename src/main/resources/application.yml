@@ -1,4 +1,6 @@
 #默认环境
+server:
+  port: 8900
 spring:
   #redis
   redis:
@@ -8,6 +10,9 @@ spring:
   devtools:
     restart:
       enabled: true
+      #设置重启的目录,paths添加哪个目录的文件需要restart，exclude不需要
+      additional-paths: src/main/java
+      additional-exclude: WEB-INF/**
   profiles:
     active: dev
   mvc:
@@ -16,9 +21,9 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
-    username: tt
-    password: 1234
-    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: lms
+    password: oracle
+    url: jdbc:oracle:thin:@192.168.2.26:1521:jiexinv68
     type: com.alibaba.druid.pool.DruidDataSource
     filters: stat
     maxActive: 20
@@ -39,6 +44,8 @@ mybatis:
   type-aliases-package: com.seecen.entity
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+     #开启MyBatis的二级缓存，一级缓存默认开启
+    cache-enabled: true
   mapper-locations: classpath:mappers/*.xml
 
 pagehelper:
@@ -49,4 +56,8 @@ management:
     web:
       exposure:
         include: "*"
+#日志打印
+logging:
+  level:
+    com.seecen: debug
 

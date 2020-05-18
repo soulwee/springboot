@@ -4,6 +4,7 @@
     <title>Title</title>
 </head>
 <body>
+Hello,${name}
 hello world!${abc}
 <a href="/index2">click</a>
 <a href="/index3">click2</a>
