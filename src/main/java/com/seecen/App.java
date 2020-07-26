@@ -7,6 +7,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 
+//标注一个主程序类，主配置类
 @SpringBootApplication
 @MapperScan("com.seecen.dao")
 public class App extends SpringBootServletInitializer{

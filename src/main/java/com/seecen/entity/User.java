@@ -4,7 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
-
+//@Setter @Getter 注解导入成功，项目也可以运行，但是会出现红色波浪线
+// 缺少lombok Plugin
 @Setter
 @Getter
 public class User implements Serializable {

@@ -20,11 +20,17 @@ spring:
       prefix: /
       suffix: .jsp
   datasource:
-    driver-class-name: oracle.jdbc.driver.OracleDriver
-    username: lms
-    password: oracle
-    url: jdbc:oracle:thin:@192.168.2.26:1521:jiexinv68
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+#    username: lms
+#    password: oracle
+#    url: jdbc:oracle:thin:@192.168.2.26:1521:jiexinv68
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/jdbc
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+
+# 配置完yml并没有生效,需要 使用DataSource池进行自动配置（加入配置类DruidConfig）
     filters: stat
     maxActive: 20
     initialSize: 1
