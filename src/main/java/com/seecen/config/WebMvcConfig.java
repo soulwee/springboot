@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
@@ -38,10 +39,16 @@ public class WebMvcConfig implements WebMvcConfigurer {
         resolvers.add(new MyHandlerExceptionResolver());
     }
     @Bean
-    FilterRegistrationBean filterRegistrationBean(){
-            FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-            filterRegistrationBean.setFilter(new MyFilter());
-            filterRegistrationBean.addUrlPatterns("/*");
-            return filterRegistrationBean;
+    public FilterRegistrationBean filterRegistrationBean(){
+        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+        filterRegistrationBean.setFilter(new MyFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        return filterRegistrationBean;
+    }
+
+
+    @Bean
+    public LocaleResolver localeResolver(){
+        return new MyLocaleResolver();
     }
 }
