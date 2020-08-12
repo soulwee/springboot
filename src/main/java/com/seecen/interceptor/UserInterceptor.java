@@ -1,5 +1,6 @@
 package com.seecen.interceptor;
 
+import com.seecen.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
@@ -14,7 +15,10 @@ public class UserInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
-        Object user = session.getAttribute("user");
+        User user = new User(1,"1","s");
+        session.setAttribute("user",user);
+        /*Object user = session.getAttribute("user");*/
+
         String url = request.getRequestURI();
         logger.info("interceptor:"+url);
         if(url.contains("/login")){

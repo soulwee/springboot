@@ -19,10 +19,10 @@ import java.util.List;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
     //自定义控制器方法参数解析器
-    @Override
+  /*  @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new UserResolver());
-    }
+    }*/
     //自定义http消息转化器
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,9 +48,10 @@ public class JspController {
         return "login";
     }
 
-    @RequestMapping("/login")
-    public String login(HttpServletRequest request, @RequestParam String name, @RequestParam String pass) {
-        request.getSession().setAttribute("user", new User(1, name, pass));
+    @PostMapping("/login")
+    public String login(HttpServletRequest request,User user) {
+        System.out.println("birth:"+user.getBirth());
+        request.getSession().setAttribute("user", new User(1, user.getName(), user.getPass()));
         return "redirect:/index1";
     }
 

@@ -8,9 +8,10 @@
 <%--
     浏览器设置的是en_US还是en,这两个是不一样的。一个是英文(美国)一个是英文
 --%>
-<form action="/login" method="post">
+<form action="/login" method="post" enctype="multipart/form-data">
     <fmt:message key="name"> </fmt:message>：<input type="text" name="name"><br/>
     <fmt:message key="password"> </fmt:message>：<input type="password" name="pass"><br/>
+    <input type="date" name="birth"><br/>
     <button type="submit"><fmt:message key="submit"> </fmt:message></button>
 </form>
 

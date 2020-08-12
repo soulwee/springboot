@@ -7,11 +7,31 @@
         <id property="id" column="usr_ent_id"/>
         <result property="name" column="usr_ste_usr_id"/>
         <result property="pass" column="usr_pwd"/>
+        <result property="birth" column="usr_bday"/>
     </resultMap>
     <select id="queryAllUser" resultMap="UserMap">
-        select * from reguser
+        select * from reguser where usr_bday is not null
+    </select>
+    <resultMap id="myMap" type="java.util.Map">
+        <result property="id" column="usr_ent_id"/>
+        <result property="name" column="usr_ste_usr_id"/>
+        <result property="birth" column="usr_bday"/>
+    </resultMap>
+    <select id="queryMap" resultMap="myMap">
+        select usr_ent_id ,usr_ste_usr_id,usr_bday from reguser where usr_bday is not null
+    </select>
+    <select id="queryMapt" resultMap="myMap">
+        select usr_ent_id ,usr_ste_usr_id from reguser where usr_ent_id &lt; 20
+    </select>
+    <select id="queryStatus" resultType="map">
+        select usr_status,count(usr_ent_id) from reguser group by usr_status
     </select>
     <select id="queryUserById" parameterType="int" resultMap="UserMap">
         select * from reguser where usr_ent_id=#{id}
     </select>
+    <select id="queryDate" resultMap="UserMap">
+        select usr_ent_id ,usr_ste_usr_id,to_char(usr_bday,'yyyy-mm-dd hh24:mi:ss') as usr_bday
+         from reguser where usr_bday is not null
+    </select>
+
 </mapper>

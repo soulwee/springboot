@@ -1,6 +1,7 @@
 package com.seecen.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.seecen.dao.UserDao;
 import com.seecen.entity.User;
 import com.seecen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +13,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class HelloController {
     @Autowired
     private UserService userService;
-    @RequestMapping("indexError")
+
+    @Autowired
+    private UserDao userDao;
+
+   @RequestMapping("indexError")
     public String index(){
         String s=null;//这里有异常
         System.out.println(s.equals("aaa"));
@@ -40,6 +46,29 @@ public class HelloController {
         return user;
     }
 
+    @RequestMapping("/queryMap")
+    public Map queryMap(){
+        Map<Integer, String> integerStringMap = userDao.queryMap();
+        return integerStringMap;
+    }
+
+    @RequestMapping("/queryMapt")
+    public Map queryMapt(){
+        Map<Integer, String> integerStringMap = userDao.queryMapt();
+        return integerStringMap;
+    }
+
+    @RequestMapping("/queryStatus")
+    public List queryStats(){
+        List<Map<String,Integer>> list = userDao.queryStatus();
+        return list;
+    }
+    @RequestMapping("/queryDate")
+    public List queryDate(){
+        List<User> list = userDao.queryDate();
+        System.out.println(list);
+        return list;
+    }
     @RequestMapping("/query")
     public PageInfo query(int pageNum,int pageSize) {
         return userService.queryAllUser(pageNum,pageSize);
