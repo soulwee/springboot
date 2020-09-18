@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 //标注一个主程序类，主配置类
 @SpringBootApplication
-@MapperScan("com.seecen.dao")
+@MapperScan({"com.seecen.dao","com.seecen.mapper"})
 public class App extends SpringBootServletInitializer{
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

@@ -25,7 +25,7 @@ spring-boot-starter-web表示springweb的核心组件
 在发生对应的异常时进入方法中处理,方法可以返会多种类型的结果,也可以返回
 json对象
 
-注解的解释:
+lombok注解的解释:
 @Data标签,生成getter/setter/toString()方法,equals()方法,hashCode()方法,不带参构造
 @NonNull:让你NullPointerException
 @CleanUp:自动资源管理,不用再在finally中添加资源的close方法
@@ -40,6 +40,8 @@ json对象
 @Synchronized:同步方法安全的转化
 @Getter(lazy=true):
 @Log : 支持各种logger对象，使用时用对应的注解
+@Slf4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
+@Log4j : 注解在类上, 为类提供一个属性名为 log 的 log4j 的日志对象
 
 Slf4j只是实现了抽象的日志接口,不需要关注某种具体实现的日志框架
 它仅仅是一个为java程序提供日志输出的同一接口,并不是一个具体的

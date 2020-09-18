@@ -15,6 +15,7 @@ spring:
       #设置重启的目录,paths添加哪个目录的文件需要restart，exclude不需要
       additional-paths: src/main/java
       additional-exclude: WEB-INF/**
+  #环境设置：dev、test、prod
   profiles:
     active: dev
   mvc:
@@ -22,15 +23,15 @@ spring:
       prefix: /
       suffix: .jsp
   datasource:
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
-#    username: lms
-#    password: oracle
-#    url: jdbc:oracle:thin:@192.168.2.26:1521:jiexinv68
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/spring_cache?serverTimezone=GMT%2B8
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    username: lms
+    password: oracle
+    url: jdbc:oracle:thin:@192.168.2.26:1521:jiexinv68
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://localhost:3306/spring_cache?serverTimezone=GMT%2B8
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
 
 # 配置完yml并没有生效,需要 使用DataSource池进行自动配置（加入配置类DruidConfig）
     filters: stat
@@ -55,7 +56,6 @@ mybatis:
      #开启MyBatis的二级缓存，一级缓存默认开启
     cache-enabled: true
   mapper-locations: classpath:mappers/*.xml
-
 pagehelper:
   reasonable: true
   support-methods-arguments: true
@@ -68,4 +68,7 @@ management:
 logging:
   level:
     com.seecen: debug
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

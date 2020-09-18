@@ -16,4 +16,6 @@ public interface UserDao {
     Map<Integer,String> queryMapt();
     List<Map<String,Integer>> queryStatus();
     User queryUserById(int id);
+
+    User testById(int id);
 }
